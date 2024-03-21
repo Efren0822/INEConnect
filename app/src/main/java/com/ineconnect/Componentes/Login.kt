@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import androidx.navigation.NavController
+
 
 @Composable
 fun Login(onLoginClick: (String, String) -> Unit, onRegisterClick: () -> Unit,onSuccessRedirect: (String) -> Unit) {
