@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.gcacace.signaturepad.views.SignaturePad
 import android.widget.LinearLayout
 
-class MainActivity1 : AppCompatActivity() {
+class CaptadorFirma : AppCompatActivity() {
 
     private lateinit var mSignaturePad: SignaturePad
 
