@@ -21,9 +21,10 @@ import com.ineconnect.Componentes.Login
 import com.ineconnect.Componentes.bienvenida
 import com.ineconnect.ui.theme.INEConnectTheme
 import com.ineconnect.Components.LoginC
-import com.ineconnect.Components.Menu
 import com.ineconnect.Views.LoginViewModel
 import com.ineconnect.Componentes.*
+import com.ineconnect.Components.Navegacion
+import com.ineconnect.Views.MenuViewModel
 
 
 class MainActivity : ComponentActivity() {
@@ -64,8 +65,8 @@ fun MainContent(navController: NavHostController) {
                     navController.navigate("registro")
                 },
                 onSuccessRedirect = { username ->
-                    pantallaActual.value = "Bienvenida"
-                    navController.navigate("bienvenida/$username")
+                    pantallaActual.value = "navegacion"
+                    navController.navigate("navegacion/$username")
                 }
             )
         }
@@ -81,15 +82,15 @@ fun MainContent(navController: NavHostController) {
         }
         composable("navegacion/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username") ?: ""
-            Navegacion(
-                pantallaActual = pantallaActual,
-                onBackClick = { navController.popBackStack() },
-                onRegisterSuccess = {
-                    println("Registro exitoso desde Navegacion")
-                    navController.popBackStack()
-                }
-            )
+            Navegacion(viewModel = MenuViewModel(), userId = username ){
+                navController.navigate("datos")
+            }
 
+        }
+        composable("datos"){
+            DatosPersonales(onBackClick = { navController.navigate("navegacion") }) {
+
+            }
         }
     }
 }

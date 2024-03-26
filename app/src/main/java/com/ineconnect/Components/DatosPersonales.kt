@@ -17,7 +17,7 @@ import com.ineconnect.Views.DatosPersonalesViewModel
 
 
 @Composable
-fun DatosPersonales(viewModel: DatosPersonalesViewModel, userId: String, navigateToMenu: () -> Unit) {
+fun DatosPersonales1(viewModel: DatosPersonalesViewModel, userId: String, navigateToMenu: () -> Unit) {
     var nombreCompleto by remember { mutableStateOf("") }
     var domicilio by remember { mutableStateOf("") }
     var clave by remember { mutableStateOf("") }

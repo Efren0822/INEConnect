@@ -22,7 +22,7 @@ import com.ineconnect.Views.MenuViewModel
 
 
 @Composable
-fun Menu(viewModel: MenuViewModel, userId: String, navigateToDatosPersonales: () -> Unit) {
+fun Menu1(viewModel: MenuViewModel, userId: String, navigateToDatosPersonales: () -> Unit) {
     var nombreCompleto by remember { mutableStateOf("") }
     var domicilio by remember { mutableStateOf("") }
     var clave by remember { mutableStateOf("") }

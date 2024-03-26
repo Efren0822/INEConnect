@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -90,14 +91,13 @@ fun DatosPersonales(
 
         OutlinedTextField(
             value = curp,
-            onValueChange = { claveElectoral = it },
-            label = { Text("Clave Electoral") },
+            onValueChange = { curp = it },
+            label = { Text("Curp") },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-            // Aquí deberías agregar la lógica para guardar los datos en Firestore
             guardarRegistroEnFirestore(
                 nombreCompleto.text,
                 fechaNacimiento.text,
@@ -113,7 +113,7 @@ fun DatosPersonales(
             Text("Registrarse")
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { onBackClick() }) {
+        Button(onClick = { onBackClick }) {
             Text("Regresar")
         }
     }
@@ -139,17 +139,17 @@ fun guardarRegistroEnFirestore(
         "nacionalidad" to nacionalidad,
         "lugarNacimiento" to lugarNacimiento,
         "domicilio" to domicilio,
-        "claveElectoral" to claveElectoral,
+        "clave" to claveElectoral,
         "curp" to curp
     )
 
     registrosRef.add(registro)
         .addOnSuccessListener { documentReference ->
             println("Registro exitoso con ID: ${documentReference.id}")
-            // Aquí puedes mostrar una alerta de registro exitoso si lo deseas
+
         }
         .addOnFailureListener { e ->
             println("Error al registrar: $e")
-            // Aquí puedes mostrar una alerta de error si lo deseas
+
         }
 }

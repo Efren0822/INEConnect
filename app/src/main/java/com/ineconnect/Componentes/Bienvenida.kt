@@ -7,10 +7,10 @@ import androidx.navigation.NavController
 
 @Composable
 fun bienvenida(navController: NavController, username: String) {
-    // Contenido de tu componente bienvenida
+
 
     Button(onClick = {
-        navController.navigate("navegacion/$username")
+        navController.navigate("datos")
     }) {
         Text("Registro del INE")
     }
