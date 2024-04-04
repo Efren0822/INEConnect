@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">INEConnect</string>
+    <string name="nombre_completo_label">Nombre completo</string>
+    <string name="fecha_nacimiento_label">Fecha de nacimiento</string>
+    <string name="sexo_label">Sexo</string>
+    <string name="nacionalidad_label">Nacionalidad</string>
+    <string name="lugar_nacimiento_label">Lugar de nacimiento</string>
+    <string name="domicilio_label">Domicilio</string>
+    <string name="clave_electoral_label">Clave electoral</string>
+    <string name="curp_label">CURP</string>
+    <string name="register_button_Data">Registrarse</string>
+    <string name="tituloDatos">Registro de datos del INE</string>
+    <string name="fotoPerfil">Foto de perfil</string>
+    <string name="regresar">Regresar</string>
+
+
+
+    <string name="login">Inicio de Sesion</string>
+    <string name="textlogin">Para acceder al sistema, ingrese su usuario y contraseña</string>
+    <string name="username_label">Nombre de usuario</string>
+    <string name="password_label">Contraseña</string>
+    <string name="login_button_label">Iniciar sesión</string>
+    <string name="register_button_label">Registrar usuario</string>
+
+    <string name="menu">Bienvenido,%1$s %2$s</string>
+    <string name="dias">Buenos dias 🌤️</string>
+    <string name="tardes">Buenas tardes ☀️</string>
+    <string name="noches">Buenas noches 🌙</string>
+    <string name="no_data">No hay ningún dato disponible</string>
+    <string name="nombre">Nombre,%1$s</string>
+    <string name="domicilio">Domicilio,%1$s</string>
+    <string name="perfil">Foto de perfil</string>
+    <string name="clave">Clave electoral,%1$s</string>
+    <string name="curp">Curp,%1$s</string>
+    <string name="fechaNacimiento">Fecha nacimiento,%1$s</string>
+    <string name="lugarNacimiento">Lugar nacimiento,%1$s</string>
+    <string name="sexo">Sexo,%1$s</string>
+    <string name="sex_icon_description">Icono de sexo</string>
+    <string name="add_data_button_label">Agregar datos</string>
+    <string name="logout">Cerrar sesión</string>
+
+
+
+    <string name="registro">Registrar usuario</string>
+    <string name="textRegistro">Aquí podrá registrar su usuario con el cuál accederá al sistema</string>
+    <string name="username2_label">Nombre de usuario</string>
+    <string name="password2_label">Contraseña</string>
+    <string name="register2_button_label">Registrarse</string>
+    <string name="registration_successful_message">Registro exitoso</string>
+    <string name="registration_error_message">Error al registrar usuario</string>
+    <string name="go_to_login_button_label">Ir al inicio de sesión</string>
+
 </resources>

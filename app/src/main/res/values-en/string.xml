@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">INEConnect</string>
+    <string name="nombre_completo_label">Full name</string>
+    <string name="fecha_nacimiento_label">Date of birth</string>
+    <string name="sexo_label">Gender</string>
+    <string name="nacionalidad_label">Nationality</string>
+    <string name="lugar_nacimiento_label">Place of birth</string>
+    <string name="domicilio_label">Address</string>
+    <string name="clave_electoral_label">Electoral key</string>
+    <string name="curp_label">CURP</string>
+    <string name="register_button_Data">Register</string>
+    <string name="tituloDatos">INE data registration</string>
+    <string name="fotoPerfil">Profile picture</string>
+    <string name="regresar">Return</string>
+
+
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="login_button_label">Log in</string>
+    <string name="register_button_label">Register user</string>
+    <string name="login">Login</string>
+    <string name="textlogin">To access the system, enter your username and password</string>
+
+    <string name="menu">Welcome, %1$s %2$s</string>
+    <string name="dias">Good morning 🌤️</string>
+    <string name="tardes">Good afternoon ☀️</string>
+    <string name="noches">Good evening 🌙</string>
+    <string name="nombre">Name,%1$s</string>
+    <string name="domicilio">Address,%1$s</string>
+    <string name="perfil">Profile photo</string>
+    <string name="clave">Electoral key,%1$s</string>
+    <string name="curp">Curp,%1$s</string>
+    <string name="fechaNacimiento">Date of birth,%1$s</string>
+    <string name="lugarNacimiento">Place of birth,%1$s</string>
+    <string name="sexo">Gender,%1$s</string>
+    <string name="no_data">No data available</string>
+    <string name="sex_icon_description">Sex icon</string>
+    <string name="add_data_button_label">Add data</string>
+    <string name="logout">Logout</string>
+
+
+    <string name="registro">Register user</string>
+    <string name="textRegistro">Here you can register your user with you will access the system</string>
+    <string name="username2_label">Username</string>
+    <string name="password2_label">Password</string>
+    <string name="register2_button_label">Register</string>
+    <string name="registration_successful_message">Registration successful</string>
+    <string name="registration_error_message">Error registering user</string>
+    <string name="go_to_login_button_label">Go to Login</string>
+
+</resources>

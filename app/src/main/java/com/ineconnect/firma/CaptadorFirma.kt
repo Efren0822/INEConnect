@@ -1,5 +1,5 @@
 package com.ineconnect.firma
-
+/*
 import android.graphics.Color
 import android.os.Bundle
 import android.view.ViewGroup
@@ -73,3 +73,4 @@ class CaptadorFirma : AppCompatActivity() {
         // Guardarlo en la memoria externa, enviarlo a un servidor, etc.
     }
 }
+*/

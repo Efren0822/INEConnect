@@ -20,11 +20,12 @@ import androidx.navigation.NavHostController
 import com.ineconnect.Componentes.Login
 import com.ineconnect.Componentes.bienvenida
 import com.ineconnect.ui.theme.INEConnectTheme
-import com.ineconnect.Components.LoginC
+
 import com.ineconnect.Views.LoginViewModel
 import com.ineconnect.Componentes.*
 import com.ineconnect.Components.Navegacion
 import com.ineconnect.Views.MenuViewModel
+import com.ineconnect.Views.RegistroViewModel
 
 
 class MainActivity : ComponentActivity() {
@@ -51,9 +52,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainContent(navController: NavHostController) {
-
     val pantallaActual = remember { mutableStateOf("registro") }
-    NavHost(navController, startDestination = "registro") {
+    NavHost(navController, startDestination = "login") {
         composable("login") {
             Login(
                 onLoginClick = { username, password ->
@@ -62,12 +62,13 @@ fun MainContent(navController: NavHostController) {
                 },
                 onRegisterClick = { navController ->
                     println("Abrir componente de registro")
-                    navController.navigate("registro")
+                    navController.navigate("Registro")
                 },
                 onSuccessRedirect = { username ->
                     pantallaActual.value = "navegacion"
                     navController.navigate("navegacion/$username")
-                }
+                },
+                navController=navController
             )
         }
         composable("bienvenida/{username}") { backStackEntry ->
@@ -82,62 +83,19 @@ fun MainContent(navController: NavHostController) {
         }
         composable("navegacion/{username}") { backStackEntry ->
             val username = backStackEntry.arguments?.getString("username") ?: ""
-            Navegacion(viewModel = MenuViewModel(), userId = username ){
-                navController.navigate("datos")
+            Navegacion(viewModel = MenuViewModel(), userId = username, navigateToDatosPersonales = { navController.navigate("datos") }) {
+                navController.navigate("login")
             }
 
         }
         composable("datos"){
-            DatosPersonales(onBackClick = { navController.navigate("navegacion") }) {
-
-            }
+            DatosPersonales(
+                onBackClick = { navController.navigate("navegacion/{username}") },
+                onRegisterSuccess = { navController.navigate("navegacion/{username}") },
+                navController=navController
+            )
         }
     }
 }
 
 
-/*
-@Preview
-@Composable
-fun MiApp(){
-    val navControlador = rememberNavController()
-    NavHost(navController = navControlador, startDestination = "login"){
-        composable("login"){
-            LoginScreen(navController = navControlador)
-        }
-    }
-}
-
-
-
-@Composable
-fun LoginScreen(navController: NavController) {
-    val viewModel: LoginViewModel = viewModel()
-    val KEY_ROUTE = "route"
-
-    LoginC(
-        viewModel = viewModel,
-        onSuccessRedirect = {
-            navController.navigate("Componentes/menu") {
-                // Aquí puedes configurar transiciones o animaciones si lo deseas
-            }
-        },
-        onError = { errorMessage ->
-            // Mostrar alerta de error con el mensaje
-        },
-        navController = navController
-    )
-
-    navController.currentBackStackEntry?.let { backStackEntry ->
-        val arguments = backStackEntry.arguments
-        val currentRoute = arguments?.getString(KEY_ROUTE)
-
-        if (currentRoute == "registro") {
-            navController.navigate("Componentes/registro") {
-                // Aquí puedes configurar transiciones o animaciones si lo deseas
-            }
-        }
-    }
-}
-
- */

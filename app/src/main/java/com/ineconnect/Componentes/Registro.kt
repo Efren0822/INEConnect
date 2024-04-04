@@ -9,7 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.*
 import androidx.compose.ui.platform.LocalContext
 import android.widget.Toast
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.ineconnect.R
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -45,6 +50,7 @@ fun registerUser(username: String, password: String, onSuccess: (String) -> Unit
         }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Registro(navController: NavController, onBackClick: () -> Unit) {
     var username by remember { mutableStateOf(TextFieldValue()) }
@@ -52,45 +58,62 @@ fun Registro(navController: NavController, onBackClick: () -> Unit) {
 
     val context = LocalContext.current
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        item{
 
-        OutlinedTextField(
-            value = username,
-            onValueChange = { username = it },
-            label = { Text("Username") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            label = { Text("Password") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            registerUser(username.text, password.text,
-                onSuccess = {
-                    Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                },
-                onError = { errorMessage ->
-                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
-                }
-            )
-        }) {
-            Text("Registrarse")
+            TopAppBar(title = { Text(stringResource(id = R.string.registro)) },
+                modifier = Modifier.fillMaxWidth())
+            Spacer(modifier = Modifier.height(16.dp))
+            Image(painter = painterResource(id = R.drawable.menuprincipal), contentDescription = "",modifier = Modifier.size(150.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = stringResource(id = R.string.textRegistro))
+            Spacer(modifier = Modifier.height(16.dp))
         }
-        Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            navController.navigate("login")
-        }) {
-            Text("Ir a Login")
+        item {
+            OutlinedTextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text(stringResource(id = R.string.username2_label)) },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            OutlinedTextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text(stringResource(id = R.string.password2_label)) },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(modifier = Modifier.fillMaxWidth(), onClick = {
+                registerUser(username.text, password.text,
+                    onSuccess = {
+                        //Toast.makeText(context, "Registro exitoso / Successful", Toast.LENGTH_SHORT).show()
+                                showAlerta(context,"Registro exitoso",R.drawable.principal)
+                    },
+                    onError = { errorMessage ->
+                        //Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                        showAlerta(context,errorMessage,R.drawable.principal)
+                    }
+                )
+            }) {
+                Text(stringResource(id = R.string.register2_button_label))
+            }
+        }
+        item {
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(modifier = Modifier.fillMaxWidth(), onClick = {
+                navController.navigate("login")
+            }) {
+                Text(stringResource(id = R.string.go_to_login_button_label))
+            }
         }
     }
 }

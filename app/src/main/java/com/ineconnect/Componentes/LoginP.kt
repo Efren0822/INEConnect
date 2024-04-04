@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package com.ineconnect.Componentes
 
 import androidx.appcompat.app.AlertDialog
@@ -13,49 +15,79 @@ import androidx.compose.ui.unit.dp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import android.content.Context
+import android.widget.Toast
+import android.widget.Toast.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.ineconnect.R
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Login(onLoginClick: (String, String) -> Unit, onRegisterClick: (NavController) -> Unit, onSuccessRedirect: (String) -> Unit) {
+fun Login(onLoginClick: (String, String) -> Unit, onRegisterClick: (NavController) -> Unit, onSuccessRedirect: (String) -> Unit,navController: NavController) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        TextField(
-            value = username,
-            onValueChange = { username = it },
-            label = { Text("Username") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        TextField(
-            value = password,
-            onValueChange = { password = it },
-            label = { Text("Password") },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            validateUser(username, password, onSuccess = {
-                onLoginClick(username, password)
-                onSuccessRedirect(username)
-            }, onError = { error ->
-                showErrorDialog(context, error)
-            })
-        }) {
-            Text("Iniciar Sesión")
+        item{
+            TopAppBar(title = { Text(stringResource(id = R.string.login)) },
+                modifier = Modifier.fillMaxWidth())
+            Spacer(modifier = Modifier.height(16.dp))
+            Image(painter = painterResource(id = R.drawable.login), contentDescription = "", modifier = Modifier.size(150.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(stringResource(id = R.string.textlogin))
+            Spacer(modifier = Modifier.height(16.dp))
         }
+        item {
+            TextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text(stringResource(id = R.string.username_label)) },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text(stringResource(id = R.string.password_label)) },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(modifier = Modifier.fillMaxWidth(), onClick = {
+                validateUser(username, password, onSuccess = {
+                    onLoginClick(username, password)
+                    onSuccessRedirect(username)
+                    //makeText(context, "Inicio de sesion exitoso / Successful", LENGTH_SHORT).show()
+                    showAlerta(context,"Inicio de sesión exitoso",R.drawable.principal)
+                }, onError = { errorMessage ->
+                    //Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                    showAlerta(context,errorMessage,R.drawable.principal)
+                })
+            }) {
+                Text(stringResource(id = R.string.login_button_label))
+            }
+        }
+        item{
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { onRegisterClick }) {
-            Text("Registro de Usuario")
+        Button(modifier = Modifier.fillMaxWidth(),onClick = { //onRegisterClick
+            navController.navigate("registro")
+        }) {
+            Text(stringResource(id = R.string.register_button_label))
+        }
         }
     }
 }

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "896865158270",
-    "project_id": "ineconnect-891b4",
-    "storage_bucket": "ineconnect-891b4.appspot.com"
+    "project_number": "1062620027110",
+    "project_id": "ineconnect-e24c0",
+    "storage_bucket": "ineconnect-e24c0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:896865158270:android:1f46929556f78d337cc42f",
+        "mobilesdk_app_id": "1:1062620027110:android:a3c46c2941d6fdff324327",
         "android_client_info": {
           "package_name": "com.ineconnect"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD37C3YvfsrV61ITZkIYW1Qg2ljsxTkZnI"
+          "current_key": "AIzaSyA3-tysls4p6XsJLV7l85aHXB-SmobTJDw"
         }
       ],
       "services": {
