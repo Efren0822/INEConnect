@@ -15,14 +15,18 @@ import androidx.compose.ui.unit.dp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import android.content.Context
+import android.content.res.ColorStateList
+import android.widget.Button
 import android.widget.Toast
 import android.widget.Toast.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import com.ineconnect.R
 
@@ -33,6 +37,7 @@ fun Login(onLoginClick: (String, String) -> Unit, onRegisterClick: (NavControlle
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val context = LocalContext.current
+
 
     LazyColumn(
         modifier = Modifier

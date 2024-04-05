@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     MainContent(navController)
-                   // MiApp()
+
                 }
             }
         }
